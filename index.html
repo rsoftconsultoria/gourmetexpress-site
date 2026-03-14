@@ -56,7 +56,7 @@ ul{list-style:none}
 
 /* ─── HERO ─── */
 .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 0 80px}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#1a0800 0%,#2d1200 25%,#1a0f05 50%,#0f0a07 100%);z-index:0}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,8,0,.85) 0%,rgba(45,18,0,.8) 25%,rgba(26,15,5,.85) 50%,rgba(15,10,7,.9) 100%),url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&q=80') center/cover no-repeat;z-index:0}
 .hero-bg::before{content:'';position:absolute;top:-50%;right:-20%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(232,93,4,.12) 0%,transparent 70%);animation:heroGlow 8s ease-in-out infinite alternate}
 .hero-bg::after{content:'';position:absolute;bottom:-30%;left:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,209,102,.06) 0%,transparent 70%);animation:heroGlow 10s ease-in-out infinite alternate-reverse}
 @keyframes heroGlow{0%{transform:translate(0,0) scale(1)}100%{transform:translate(30px,-20px) scale(1.15)}}
@@ -114,7 +114,9 @@ ul{list-style:none}
 /* ─── CATEGORIES ─── */
 .categories{background:var(--bg-surface)}
 .categories-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
-.category-card{background:var(--bg-card);border-radius:var(--radius-lg);padding:32px 16px;text-align:center;cursor:pointer;transition:var(--transition);border:1px solid transparent;position:relative;overflow:hidden}
+.category-card{background:var(--bg-card);border-radius:var(--radius-lg);padding:0;text-align:center;cursor:pointer;transition:var(--transition);border:1px solid transparent;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.category-card .category-img{width:100%;height:120px;object-fit:cover;display:block}
+.category-card .category-body{padding:20px 16px}
 .category-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,93,4,.06),transparent);opacity:0;transition:var(--transition)}
 .category-card:hover,.category-card:focus{transform:translateY(-6px);border-color:rgba(232,93,4,.2);box-shadow:0 12px 40px rgba(0,0,0,.3)}
 .category-card:hover::before,.category-card:focus::before{opacity:1}
@@ -148,7 +150,7 @@ ul{list-style:none}
 .dishes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .dish-card{background:var(--bg-card);border-radius:var(--radius-lg);overflow:hidden;transition:var(--transition);border:1px solid transparent;position:relative}
 .dish-card:hover{transform:translateY(-4px);border-color:rgba(232,93,4,.15);box-shadow:var(--shadow-lg)}
-.dish-img{height:160px;position:relative;overflow:hidden}
+.dish-img{height:180px;position:relative;overflow:hidden}
 .dish-img .img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
 .dish-img .img-placeholder i{color:var(--text-dim);opacity:.5}
 .dish-tag{position:absolute;top:10px;right:10px;background:rgba(15,10,7,.85);backdrop-filter:blur(8px);color:var(--gold);padding:4px 10px;border-radius:50px;font-size:.7rem;font-weight:700}
@@ -210,7 +212,7 @@ ul{list-style:none}
 
 /* ─── PROMO ─── */
 .promo{padding:80px 0}
-.promo-banner{background:linear-gradient(135deg,#2d1200,#1a0800,#2d1200);border-radius:var(--radius-xl);padding:56px;display:flex;align-items:center;justify-content:space-between;gap:40px;border:1px solid rgba(232,93,4,.15);position:relative;overflow:hidden}
+.promo-banner{background:linear-gradient(135deg,rgba(45,18,0,.92),rgba(26,8,0,.95),rgba(45,18,0,.92)),url('https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=1200&q=80') center/cover no-repeat;border-radius:var(--radius-xl);padding:56px;display:flex;align-items:center;justify-content:space-between;gap:40px;border:1px solid rgba(232,93,4,.15);position:relative;overflow:hidden}
 .promo-banner::before{content:'';position:absolute;top:-50%;right:-10%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(232,93,4,.08),transparent);pointer-events:none}
 .promo-content h2{font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:8px}
 .promo-content h2 span{color:var(--accent)}
@@ -408,11 +410,8 @@ ul{list-style:none}
     </div>
     <div class="hero-visual reveal reveal-delay-2">
       <div class="hero-orbit" aria-hidden="true"></div>
-      <div class="hero-plate">
-        <div class="hero-plate-inner">
-          <i data-lucide="utensils-crossed" style="width:64px;height:64px" aria-hidden="true"></i>
-          <span>Alta Gastronomia</span>
-        </div>
+      <div class="hero-plate" style="overflow:hidden">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=600&fit=crop" alt="Prato gourmet premium" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:50%">
       </div>
       <div class="hero-delivery-badge">
         <i data-lucide="bike" style="width:22px;height:22px" aria-hidden="true"></i>
@@ -433,34 +432,52 @@ ul{list-style:none}
     <p class="section-desc reveal">Dos sushis mais delicados às sobremesas irresistíveis. Escolha sua culinária favorita e descubra novos sabores.</p>
     <div class="categories-grid">
       <div class="category-card reveal reveal-delay-1" tabindex="0" role="button" aria-label="Culinária Japonesa">
-        <div class="category-icon"><i data-lucide="fish" aria-hidden="true"></i></div>
-        <h3>Japonesa</h3>
-        <p>42 restaurantes</p>
+        <img class="category-img" src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=400&h=300&fit=crop" alt="Culinária Japonesa - Sushi" loading="lazy">
+        <div class="category-body">
+          <div class="category-icon"><i data-lucide="fish" aria-hidden="true"></i></div>
+          <h3>Japonesa</h3>
+          <p>42 restaurantes</p>
+        </div>
       </div>
       <div class="category-card reveal reveal-delay-1" tabindex="0" role="button" aria-label="Culinária Italiana">
-        <div class="category-icon"><i data-lucide="pizza" aria-hidden="true"></i></div>
-        <h3>Italiana</h3>
-        <p>38 restaurantes</p>
+        <img class="category-img" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop" alt="Culinária Italiana - Pizza artesanal" loading="lazy">
+        <div class="category-body">
+          <div class="category-icon"><i data-lucide="pizza" aria-hidden="true"></i></div>
+          <h3>Italiana</h3>
+          <p>38 restaurantes</p>
+        </div>
       </div>
       <div class="category-card reveal reveal-delay-2" tabindex="0" role="button" aria-label="Culinária Brasileira">
-        <div class="category-icon"><i data-lucide="flame" aria-hidden="true"></i></div>
-        <h3>Brasileira</h3>
-        <p>65 restaurantes</p>
+        <img class="category-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=300&fit=crop" alt="Culinária Brasileira - Churrasco" loading="lazy">
+        <div class="category-body">
+          <div class="category-icon"><i data-lucide="flame" aria-hidden="true"></i></div>
+          <h3>Brasileira</h3>
+          <p>65 restaurantes</p>
+        </div>
       </div>
       <div class="category-card reveal reveal-delay-2" tabindex="0" role="button" aria-label="Culinária Francesa">
-        <div class="category-icon"><i data-lucide="wine" aria-hidden="true"></i></div>
-        <h3>Francesa</h3>
-        <p>18 restaurantes</p>
+        <img class="category-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=300&fit=crop" alt="Culinária Francesa - Haute cuisine" loading="lazy">
+        <div class="category-body">
+          <div class="category-icon"><i data-lucide="wine" aria-hidden="true"></i></div>
+          <h3>Francesa</h3>
+          <p>18 restaurantes</p>
+        </div>
       </div>
       <div class="category-card reveal reveal-delay-3" tabindex="0" role="button" aria-label="Culinária Vegana">
-        <div class="category-icon"><i data-lucide="leaf" aria-hidden="true"></i></div>
-        <h3>Vegana</h3>
-        <p>29 restaurantes</p>
+        <img class="category-img" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop" alt="Culinária Vegana - Bowl vegano" loading="lazy">
+        <div class="category-body">
+          <div class="category-icon"><i data-lucide="leaf" aria-hidden="true"></i></div>
+          <h3>Vegana</h3>
+          <p>29 restaurantes</p>
+        </div>
       </div>
       <div class="category-card reveal reveal-delay-3" tabindex="0" role="button" aria-label="Sobremesas">
-        <div class="category-icon"><i data-lucide="cake-slice" aria-hidden="true"></i></div>
-        <h3>Sobremesas</h3>
-        <p>47 restaurantes</p>
+        <img class="category-img" src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=300&fit=crop" alt="Sobremesas gourmet" loading="lazy">
+        <div class="category-body">
+          <div class="category-icon"><i data-lucide="cake-slice" aria-hidden="true"></i></div>
+          <h3>Sobremesas</h3>
+          <p>47 restaurantes</p>
+        </div>
       </div>
     </div>
   </div>
@@ -474,8 +491,8 @@ ul{list-style:none}
     <p class="section-desc reveal">Curadoria dos melhores restaurantes da cidade, selecionados pelo nosso time de especialistas gastronômicos.</p>
     <div class="restaurants-grid">
       <div class="restaurant-card reveal reveal-delay-1">
-        <div class="restaurant-img placeholder-japonesa">
-          <div class="img-placeholder"><i data-lucide="image" style="width:40px;height:40px" aria-hidden="true"></i></div>
+        <div class="restaurant-img">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=250&fit=crop" alt="Restaurante Sakura Omakase" loading="lazy" style="width:100%;height:100%;object-fit:cover">
           <span class="restaurant-badge">Premium</span>
         </div>
         <div class="restaurant-info">
@@ -489,8 +506,8 @@ ul{list-style:none}
         </div>
       </div>
       <div class="restaurant-card reveal reveal-delay-2">
-        <div class="restaurant-img placeholder-italiana">
-          <div class="img-placeholder"><i data-lucide="image" style="width:40px;height:40px" aria-hidden="true"></i></div>
+        <div class="restaurant-img">
+          <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=400&h=250&fit=crop" alt="Restaurante Trattoria del Nonno" loading="lazy" style="width:100%;height:100%;object-fit:cover">
           <span class="restaurant-badge">Novo</span>
         </div>
         <div class="restaurant-info">
@@ -504,8 +521,8 @@ ul{list-style:none}
         </div>
       </div>
       <div class="restaurant-card reveal reveal-delay-3">
-        <div class="restaurant-img placeholder-brasileira">
-          <div class="img-placeholder"><i data-lucide="image" style="width:40px;height:40px" aria-hidden="true"></i></div>
+        <div class="restaurant-img">
+          <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=400&h=250&fit=crop" alt="Restaurante Fogo e Brasa" loading="lazy" style="width:100%;height:100%;object-fit:cover">
           <span class="restaurant-badge">Top 10</span>
         </div>
         <div class="restaurant-info">
@@ -519,8 +536,8 @@ ul{list-style:none}
         </div>
       </div>
       <div class="restaurant-card reveal reveal-delay-1">
-        <div class="restaurant-img placeholder-francesa">
-          <div class="img-placeholder"><i data-lucide="image" style="width:40px;height:40px" aria-hidden="true"></i></div>
+        <div class="restaurant-img">
+          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&h=250&fit=crop" alt="Restaurante Le Petit Bistrot" loading="lazy" style="width:100%;height:100%;object-fit:cover">
           <span class="restaurant-badge">Exclusivo</span>
         </div>
         <div class="restaurant-info">
@@ -534,8 +551,8 @@ ul{list-style:none}
         </div>
       </div>
       <div class="restaurant-card reveal reveal-delay-2">
-        <div class="restaurant-img placeholder-vegana">
-          <div class="img-placeholder"><i data-lucide="image" style="width:40px;height:40px" aria-hidden="true"></i></div>
+        <div class="restaurant-img">
+          <img src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=400&h=250&fit=crop" alt="Restaurante Raízes Vivas" loading="lazy" style="width:100%;height:100%;object-fit:cover">
         </div>
         <div class="restaurant-info">
           <h3 class="restaurant-name">Raízes Vivas</h3>
@@ -548,8 +565,8 @@ ul{list-style:none}
         </div>
       </div>
       <div class="restaurant-card reveal reveal-delay-3">
-        <div class="restaurant-img placeholder-sobremesas">
-          <div class="img-placeholder"><i data-lucide="image" style="width:40px;height:40px" aria-hidden="true"></i></div>
+        <div class="restaurant-img">
+          <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400&h=250&fit=crop" alt="Restaurante Dolce Tentação" loading="lazy" style="width:100%;height:100%;object-fit:cover">
           <span class="restaurant-badge">Favorito</span>
         </div>
         <div class="restaurant-info">
@@ -687,8 +704,8 @@ ul{list-style:none}
           </div>
         </div>
       </div>
-      <div class="promo-visual" aria-hidden="true">
-        <i data-lucide="percent" style="width:72px;height:72px" aria-hidden="true"></i>
+      <div class="promo-visual" aria-hidden="true" style="overflow:hidden;border:none">
+        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=400&fit=crop" alt="Promoção gastronômica" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:50%">
       </div>
     </div>
   </div>
@@ -698,9 +715,8 @@ ul{list-style:none}
 <section class="section app-section" id="app">
   <div class="container">
     <div class="app-container">
-      <div class="app-phone reveal" aria-hidden="true">
-        <i data-lucide="smartphone" style="width:48px;height:48px" aria-hidden="true"></i>
-        <span>Gourmet Express</span>
+      <div class="app-phone reveal" aria-hidden="true" style="padding:0;border:none;background:transparent">
+        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=600&fit=crop" alt="App Gourmet Express no celular" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:36px">
       </div>
       <div>
         <p class="section-label reveal">Baixe Grátis</p>
@@ -742,7 +758,7 @@ ul{list-style:none}
     <div class="testimonials-grid">
       <div class="testimonial-card reveal reveal-delay-1">
         <div class="testimonial-header">
-          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#e85d04,#ff8c42)">MC</div>
+          <div class="testimonial-avatar" style="padding:0;overflow:hidden"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Mariana Costa" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
           <div>
             <div class="testimonial-name">Mariana Costa</div>
             <div class="testimonial-location">Jardins, SP</div>
@@ -759,7 +775,7 @@ ul{list-style:none}
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
         <div class="testimonial-header">
-          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#ffd166,#ff9f1c)">RL</div>
+          <div class="testimonial-avatar" style="padding:0;overflow:hidden"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="Ricardo Lima" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
           <div>
             <div class="testimonial-name">Ricardo Lima</div>
             <div class="testimonial-location">Pinheiros, SP</div>
@@ -776,7 +792,7 @@ ul{list-style:none}
       </div>
       <div class="testimonial-card reveal reveal-delay-3">
         <div class="testimonial-header">
-          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#4ade80,#22c55e)">AS</div>
+          <div class="testimonial-avatar" style="padding:0;overflow:hidden"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Ana Souza" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
           <div>
             <div class="testimonial-name">Ana Souza</div>
             <div class="testimonial-location">Vila Madalena, SP</div>
@@ -793,7 +809,7 @@ ul{list-style:none}
       </div>
       <div class="testimonial-card reveal reveal-delay-4">
         <div class="testimonial-header">
-          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#60a5fa,#3b82f6)">PF</div>
+          <div class="testimonial-avatar" style="padding:0;overflow:hidden"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Pedro Ferreira" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
           <div>
             <div class="testimonial-name">Pedro Ferreira</div>
             <div class="testimonial-location">Itaim Bibi, SP</div>
@@ -919,14 +935,14 @@ ul{list-style:none}
 
 /* ─── DATA ─── */
 const dishes = [
-  {id:1,name:'Sashimi Selection',restaurant:'Sakura Omakase',price:89.90,tag:'Japonesa',gradient:'linear-gradient(135deg,#1a1412,#2d1f16)'},
-  {id:2,name:'Risotto al Tartufo',restaurant:'Trattoria del Nonno',price:72.50,tag:'Italiana',gradient:'linear-gradient(135deg,#1a1210,#2d1814)'},
-  {id:3,name:'Picanha Premium 400g',restaurant:'Fogo & Brasa',price:98.00,tag:'Brasileira',gradient:'linear-gradient(135deg,#1a1510,#2d2014)'},
-  {id:4,name:'Crème Brûlée',restaurant:'Le Petit Bistrot',price:38.90,tag:'Francesa',gradient:'linear-gradient(135deg,#16140f,#2a241a)'},
-  {id:5,name:'Bowl Proteico Vegano',restaurant:'Raízes Vivas',price:42.90,tag:'Vegana',gradient:'linear-gradient(135deg,#101a10,#1a2d1a)'},
-  {id:6,name:'Tiramisù Clássico',restaurant:'Dolce Tentação',price:34.50,tag:'Sobremesas',gradient:'linear-gradient(135deg,#1a1018,#2d1a28)'},
-  {id:7,name:'Temaki Especial Duo',restaurant:'Sakura Omakase',price:56.00,tag:'Japonesa',gradient:'linear-gradient(135deg,#1a1412,#2d1f16)'},
-  {id:8,name:'Feijoada Imperial',restaurant:'Fogo & Brasa',price:68.00,tag:'Brasileira',gradient:'linear-gradient(135deg,#1a1510,#2d2014)'}
+  {id:1,name:'Sashimi Selection',restaurant:'Sakura Omakase',price:89.90,tag:'Japonesa',gradient:'linear-gradient(135deg,#1a1412,#2d1f16)',img:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400&h=400&fit=crop'},
+  {id:2,name:'Risotto al Tartufo',restaurant:'Trattoria del Nonno',price:72.50,tag:'Italiana',gradient:'linear-gradient(135deg,#1a1210,#2d1814)',img:'https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=400&h=400&fit=crop'},
+  {id:3,name:'Picanha Premium 400g',restaurant:'Fogo & Brasa',price:98.00,tag:'Brasileira',gradient:'linear-gradient(135deg,#1a1510,#2d2014)',img:'https://images.unsplash.com/photo-1558030006-450675393462?w=400&h=400&fit=crop'},
+  {id:4,name:'Pad Thai Premium',restaurant:'Le Petit Bistrot',price:38.90,tag:'Francesa',gradient:'linear-gradient(135deg,#16140f,#2a241a)',img:'https://images.unsplash.com/photo-1559314809-0d155014e29e?w=400&h=400&fit=crop'},
+  {id:5,name:'Buddha Bowl Vegano',restaurant:'Raízes Vivas',price:42.90,tag:'Vegana',gradient:'linear-gradient(135deg,#101a10,#1a2d1a)',img:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=400&fit=crop'},
+  {id:6,name:'Tiramisù Clássico',restaurant:'Dolce Tentação',price:34.50,tag:'Sobremesas',gradient:'linear-gradient(135deg,#1a1018,#2d1a28)',img:'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=400&fit=crop'},
+  {id:7,name:'Burger Premium',restaurant:'Sakura Omakase',price:56.00,tag:'Japonesa',gradient:'linear-gradient(135deg,#1a1412,#2d1f16)',img:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop'},
+  {id:8,name:'Açaí Bowl Premium',restaurant:'Fogo & Brasa',price:68.00,tag:'Brasileira',gradient:'linear-gradient(135deg,#1a1510,#2d2014)',img:'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=400&h=400&fit=crop'}
 ];
 
 const cart = [];
@@ -939,7 +955,7 @@ function renderDishes(){
   grid.innerHTML = dishes.map((d,i) => `
     <div class="dish-card reveal reveal-delay-${(i%4)+1}" data-id="${d.id}">
       <div class="dish-img" style="background:${d.gradient}">
-        <div class="img-placeholder"><i data-lucide="utensils" style="width:32px;height:32px" aria-hidden="true"></i></div>
+        <img src="${d.img}" alt="${d.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0">
         <span class="dish-tag">${d.tag}</span>
       </div>
       <div class="dish-info">
@@ -1027,7 +1043,7 @@ function updateCart(){
     const div = document.createElement('div');
     div.className = 'cart-item';
     div.innerHTML = `
-      <div class="cart-item-img" style="background:${c.gradient}"><i data-lucide="utensils" style="width:20px;height:20px" aria-hidden="true"></i></div>
+      <div class="cart-item-img" style="overflow:hidden"><img src="${c.img}" alt="${c.name}" style="width:100%;height:100%;object-fit:cover;border-radius:12px"></div>
       <div class="cart-item-info">
         <div class="cart-item-name">${c.name}</div>
         <div class="cart-item-price">R$ ${(c.price*c.qty).toFixed(2).replace('.',',')} <small>(${c.qty}x)</small></div>
