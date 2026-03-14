@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Gourmet Express - Sabores premium entregues na sua porta. Restaurantes exclusivos, pratos sofisticados e entrega relâmpago.">
+<title>Gourmet Express | Sabores Premium na Sua Porta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#0f0a07;--bg-card:#1a1310;--bg-card-hover:#231b15;--bg-surface:#140f0b;
+--accent:#e85d04;--accent-hover:#ff6b0a;--accent-glow:rgba(232,93,4,.25);
+--gold:#ffd166;--gold-dim:rgba(255,209,102,.15);
+--text:#f5ebe0;--text-muted:#a89888;--text-dim:#6b5b4e;
+--success:#4ade80;--danger:#f87171;
+--radius:12px;--radius-lg:20px;--radius-xl:28px;
+--shadow:0 4px 24px rgba(0,0,0,.4);--shadow-lg:0 12px 48px rgba(0,0,0,.5);
+--font-heading:'Cormorant Garamond',Georgia,serif;
+--font-body:'Nunito Sans','Segoe UI',sans-serif;
+--transition:all .35s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5{font-family:var(--font-heading);font-weight:600;line-height:1.2}
+a{text-decoration:none;color:inherit;transition:var(--transition)}
+img{max-width:100%;display:block}
+button{font-family:var(--font-body);cursor:pointer;border:none;outline:none}
+ul{list-style:none}
+.container{width:100%;max-width:1240px;margin:0 auto;padding:0 20px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+/* ─── NAVBAR ─── */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;transition:var(--transition)}
+.navbar.scrolled{background:rgba(15,10,7,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(232,93,4,.12);padding:10px 0}
+.navbar .container{display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-heading);font-size:1.6rem;font-weight:700;color:var(--gold)}
+.nav-brand i{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:.88rem;font-weight:600;color:var(--text-muted);letter-spacing:.3px;text-transform:uppercase;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:var(--transition)}
+.nav-links a:hover,.nav-links a:focus{color:var(--text)}
+.nav-links a:hover::after,.nav-links a:focus::after{width:100%}
+.nav-cart{position:relative;background:var(--accent);color:#fff;border-radius:50px;padding:10px 20px;font-weight:700;font-size:.85rem;display:flex;align-items:center;gap:8px;transition:var(--transition)}
+.nav-cart:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 4px 20px var(--accent-glow)}
+.cart-count{background:var(--gold);color:var(--bg);border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800}
+.mobile-toggle{display:none;background:none;color:var(--text);padding:8px}
+@media(max-width:768px){
+.nav-links{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--bg-card);flex-direction:column;padding:80px 32px 32px;gap:24px;transition:var(--transition);z-index:99;box-shadow:var(--shadow-lg)}
+.nav-links.open{right:0}
+.nav-links a{font-size:1rem}
+.mobile-toggle{display:block}
+}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 0 80px}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#1a0800 0%,#2d1200 25%,#1a0f05 50%,#0f0a07 100%);z-index:0}
+.hero-bg::before{content:'';position:absolute;top:-50%;right:-20%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(232,93,4,.12) 0%,transparent 70%);animation:heroGlow 8s ease-in-out infinite alternate}
+.hero-bg::after{content:'';position:absolute;bottom:-30%;left:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,209,102,.06) 0%,transparent 70%);animation:heroGlow 10s ease-in-out infinite alternate-reverse}
+@keyframes heroGlow{0%{transform:translate(0,0) scale(1)}100%{transform:translate(30px,-20px) scale(1.15)}}
+.hero .container{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-content h1{font-size:clamp(2.4rem,5vw,4rem);color:var(--text);margin-bottom:8px}
+.hero-content h1 span{color:var(--accent);display:block}
+.hero-tagline{font-size:1.15rem;color:var(--text-muted);margin-bottom:36px;max-width:480px;line-height:1.7}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;padding:16px 36px;border-radius:50px;font-size:1rem;font-weight:700;display:inline-flex;align-items:center;gap:10px;transition:var(--transition);letter-spacing:.3px}
+.btn-primary:hover,.btn-primary:focus{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 8px 32px var(--accent-glow)}
+.btn-secondary{background:transparent;color:var(--gold);border:2px solid rgba(255,209,102,.3);padding:14px 32px;border-radius:50px;font-size:1rem;font-weight:700;display:inline-flex;align-items:center;gap:10px;transition:var(--transition)}
+.btn-secondary:hover,.btn-secondary:focus{border-color:var(--gold);background:var(--gold-dim)}
+.hero-stats{display:flex;gap:40px;margin-top:48px}
+.hero-stat{text-align:center}
+.hero-stat strong{display:block;font-family:var(--font-heading);font-size:2rem;color:var(--gold)}
+.hero-stat span{font-size:.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.hero-plate{width:100%;max-width:460px;aspect-ratio:1;border-radius:50%;background:linear-gradient(145deg,#2d1a0c,#1a0f06);border:2px solid rgba(232,93,4,.15);display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 0 80px rgba(232,93,4,.1)}
+.hero-plate-inner{width:75%;aspect-ratio:1;border-radius:50%;background:linear-gradient(145deg,rgba(232,93,4,.08),rgba(255,209,102,.05));display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+.hero-plate-inner i{color:var(--accent);opacity:.7}
+.hero-plate-inner span{font-family:var(--font-heading);color:var(--text-muted);font-size:1.1rem;font-style:italic}
+.hero-delivery-badge{position:absolute;bottom:20px;right:10px;background:var(--bg-card);border:1px solid rgba(232,93,4,.2);border-radius:16px;padding:14px 20px;display:flex;align-items:center;gap:10px;animation:floatBadge 3s ease-in-out infinite}
+.hero-delivery-badge i{color:var(--accent)}
+.hero-delivery-badge span{font-size:.85rem;font-weight:600}
+.hero-delivery-badge strong{color:var(--gold);font-size:.85rem}
+@keyframes floatBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero-orbit{position:absolute;width:120%;height:120%;border:1px dashed rgba(232,93,4,.07);border-radius:50%;animation:orbit 40s linear infinite}
+@keyframes orbit{to{transform:rotate(360deg)}}
+@media(max-width:768px){
+.hero .container{grid-template-columns:1fr;text-align:center}
+.hero-tagline{margin-left:auto;margin-right:auto}
+.hero-ctas{justify-content:center}
+.hero-stats{justify-content:center}
+.hero-visual{margin-top:24px}
+.hero-plate{max-width:300px}
+}
+
+/* ─── SECTION COMMONS ─── */
+.section{padding:100px 0}
+.section-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-bottom:10px}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:16px}
+.section-desc{color:var(--text-muted);max-width:560px;margin-bottom:48px;font-size:1.02rem;line-height:1.7}
+.text-center{text-align:center}
+.text-center .section-desc{margin-left:auto;margin-right:auto}
+
+/* ─── REVEAL ANIMATIONS ─── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+.reveal-delay-5{transition-delay:.5s}
+
+/* ─── CATEGORIES ─── */
+.categories{background:var(--bg-surface)}
+.categories-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.category-card{background:var(--bg-card);border-radius:var(--radius-lg);padding:32px 16px;text-align:center;cursor:pointer;transition:var(--transition);border:1px solid transparent;position:relative;overflow:hidden}
+.category-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,93,4,.06),transparent);opacity:0;transition:var(--transition)}
+.category-card:hover,.category-card:focus{transform:translateY(-6px);border-color:rgba(232,93,4,.2);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.category-card:hover::before,.category-card:focus::before{opacity:1}
+.category-icon{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,rgba(232,93,4,.15),rgba(255,209,102,.08));display:flex;align-items:center;justify-content:center;margin:0 auto 16px;position:relative;z-index:1}
+.category-icon i{color:var(--accent)}
+.category-card h3{font-size:1.05rem;margin-bottom:4px;position:relative;z-index:1}
+.category-card p{font-size:.78rem;color:var(--text-muted);position:relative;z-index:1}
+@media(max-width:900px){.categories-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:500px){.categories-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ─── RESTAURANTS ─── */
+.restaurants-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.restaurant-card{background:var(--bg-card);border-radius:var(--radius-lg);overflow:hidden;transition:var(--transition);border:1px solid transparent}
+.restaurant-card:hover{transform:translateY(-4px);border-color:rgba(232,93,4,.15);box-shadow:var(--shadow-lg)}
+.restaurant-img{height:180px;position:relative;overflow:hidden}
+.restaurant-img .img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.restaurant-img .img-placeholder i{color:var(--text-dim);opacity:.5}
+.restaurant-badge{position:absolute;top:12px;left:12px;background:var(--accent);color:#fff;padding:4px 12px;border-radius:50px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.restaurant-info{padding:20px}
+.restaurant-name{font-size:1.2rem;margin-bottom:8px}
+.restaurant-cuisine{font-size:.82rem;color:var(--text-muted);margin-bottom:12px}
+.restaurant-meta{display:flex;align-items:center;gap:16px;font-size:.82rem;color:var(--text-muted)}
+.restaurant-meta span{display:flex;align-items:center;gap:4px}
+.restaurant-meta .rating{color:var(--gold)}
+.restaurant-meta .rating i{color:var(--gold)}
+@media(max-width:900px){.restaurants-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.restaurants-grid{grid-template-columns:1fr}}
+
+/* ─── DISHES ─── */
+.dishes{background:var(--bg-surface)}
+.dishes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.dish-card{background:var(--bg-card);border-radius:var(--radius-lg);overflow:hidden;transition:var(--transition);border:1px solid transparent;position:relative}
+.dish-card:hover{transform:translateY(-4px);border-color:rgba(232,93,4,.15);box-shadow:var(--shadow-lg)}
+.dish-img{height:160px;position:relative;overflow:hidden}
+.dish-img .img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.dish-img .img-placeholder i{color:var(--text-dim);opacity:.5}
+.dish-tag{position:absolute;top:10px;right:10px;background:rgba(15,10,7,.85);backdrop-filter:blur(8px);color:var(--gold);padding:4px 10px;border-radius:50px;font-size:.7rem;font-weight:700}
+.dish-info{padding:18px}
+.dish-name{font-size:1.05rem;margin-bottom:4px}
+.dish-restaurant{font-size:.78rem;color:var(--text-muted);margin-bottom:12px}
+.dish-footer{display:flex;align-items:center;justify-content:space-between}
+.dish-price{font-family:var(--font-heading);font-size:1.3rem;color:var(--accent);font-weight:700}
+.dish-price small{font-size:.75rem;color:var(--text-muted);font-family:var(--font-body);font-weight:400}
+.dish-actions{display:flex;align-items:center;gap:6px}
+.qty-btn{width:30px;height:30px;border-radius:8px;background:rgba(232,93,4,.1);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700;transition:var(--transition)}
+.qty-btn:hover{background:rgba(232,93,4,.25)}
+.qty-value{font-size:.88rem;font-weight:700;min-width:20px;text-align:center}
+.btn-add{background:var(--accent);color:#fff;border-radius:10px;padding:8px 16px;font-size:.8rem;font-weight:700;display:flex;align-items:center;gap:6px;transition:var(--transition)}
+.btn-add:hover{background:var(--accent-hover);transform:scale(1.04)}
+@media(max-width:1024px){.dishes-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.dishes-grid{grid-template-columns:1fr}}
+
+/* ─── HOW IT WORKS ─── */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;position:relative}
+.steps-grid::before{content:'';position:absolute;top:52px;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,rgba(232,93,4,.2),rgba(255,209,102,.15),rgba(232,93,4,.2),transparent)}
+.step-card{text-align:center;position:relative}
+.step-number{font-family:var(--font-heading);font-size:3.5rem;color:rgba(232,93,4,.1);font-weight:700;position:absolute;top:-20px;left:50%;transform:translateX(-50%);z-index:0}
+.step-icon{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,rgba(232,93,4,.12),rgba(255,209,102,.06));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;position:relative;z-index:1;border:2px solid rgba(232,93,4,.12);transition:var(--transition)}
+.step-card:hover .step-icon{border-color:rgba(232,93,4,.3);box-shadow:0 0 30px var(--accent-glow)}
+.step-icon i{color:var(--accent)}
+.step-icon .pulse{position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--accent);opacity:0;animation:stepPulse 2.5s ease-in-out infinite}
+@keyframes stepPulse{0%{opacity:.4;transform:scale(1)}100%{opacity:0;transform:scale(1.4)}}
+.step-card:nth-child(2) .pulse{animation-delay:.8s}
+.step-card:nth-child(3) .pulse{animation-delay:1.6s}
+.step-card h3{font-size:1.3rem;margin-bottom:8px}
+.step-card p{font-size:.9rem;color:var(--text-muted);max-width:260px;margin:0 auto}
+@media(max-width:768px){
+.steps-grid{grid-template-columns:1fr;gap:48px}
+.steps-grid::before{display:none}
+}
+
+/* ─── ORDER TRACKER ─── */
+.tracker{background:var(--bg-surface)}
+.tracker-container{background:var(--bg-card);border-radius:var(--radius-xl);padding:48px;border:1px solid rgba(232,93,4,.1);max-width:800px;margin:0 auto}
+.tracker-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:12px}
+.tracker-order{font-family:var(--font-heading);font-size:1.3rem}
+.tracker-order span{color:var(--accent)}
+.tracker-eta{display:flex;align-items:center;gap:8px;color:var(--gold);font-weight:600;font-size:.92rem}
+.tracker-progress{position:relative;margin-bottom:12px}
+.tracker-bar{width:100%;height:6px;background:rgba(232,93,4,.1);border-radius:50px;overflow:hidden}
+.tracker-bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--gold));border-radius:50px;width:0%;transition:width 1.5s ease}
+.tracker-steps{display:flex;justify-content:space-between;margin-top:20px}
+.tracker-step{text-align:center;flex:1;position:relative}
+.tracker-step-dot{width:36px;height:36px;border-radius:50%;background:var(--bg);border:2px solid var(--text-dim);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;transition:var(--transition)}
+.tracker-step.active .tracker-step-dot{border-color:var(--accent);background:rgba(232,93,4,.15)}
+.tracker-step.active .tracker-step-dot i{color:var(--accent)}
+.tracker-step.completed .tracker-step-dot{border-color:var(--success);background:rgba(74,222,128,.15)}
+.tracker-step.completed .tracker-step-dot i{color:var(--success)}
+.tracker-step-dot i{color:var(--text-dim)}
+.tracker-step span{font-size:.75rem;color:var(--text-muted);font-weight:600}
+.tracker-step.active span,.tracker-step.completed span{color:var(--text)}
+@media(max-width:600px){.tracker-container{padding:28px 20px}}
+
+/* ─── PROMO ─── */
+.promo{padding:80px 0}
+.promo-banner{background:linear-gradient(135deg,#2d1200,#1a0800,#2d1200);border-radius:var(--radius-xl);padding:56px;display:flex;align-items:center;justify-content:space-between;gap:40px;border:1px solid rgba(232,93,4,.15);position:relative;overflow:hidden}
+.promo-banner::before{content:'';position:absolute;top:-50%;right:-10%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(232,93,4,.08),transparent);pointer-events:none}
+.promo-content h2{font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:8px}
+.promo-content h2 span{color:var(--accent)}
+.promo-content p{color:var(--text-muted);font-size:1rem;margin-bottom:24px}
+.promo-code{display:inline-flex;align-items:center;gap:10px;background:rgba(232,93,4,.1);border:1px dashed var(--accent);padding:10px 20px;border-radius:10px;font-weight:700;font-size:1.1rem;color:var(--gold);margin-bottom:24px}
+.promo-code i{color:var(--accent)}
+.countdown{display:flex;gap:12px}
+.countdown-item{text-align:center}
+.countdown-value{background:var(--bg);padding:10px 14px;border-radius:10px;font-family:var(--font-heading);font-size:1.6rem;font-weight:700;color:var(--accent);min-width:56px;border:1px solid rgba(232,93,4,.15)}
+.countdown-label{font-size:.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:6px}
+.promo-visual{flex-shrink:0;width:200px;height:200px;border-radius:50%;background:linear-gradient(135deg,rgba(232,93,4,.12),rgba(255,209,102,.06));display:flex;align-items:center;justify-content:center;border:2px solid rgba(232,93,4,.1)}
+.promo-visual i{color:var(--accent);opacity:.6}
+@media(max-width:768px){
+.promo-banner{flex-direction:column;text-align:center;padding:36px 24px}
+.countdown{justify-content:center}
+.promo-visual{width:140px;height:140px}
+}
+
+/* ─── APP DOWNLOAD ─── */
+.app-section{background:var(--bg-surface)}
+.app-container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.app-phone{width:100%;max-width:300px;aspect-ratio:9/18;background:linear-gradient(145deg,var(--bg-card),#1f1710);border-radius:36px;border:2px solid rgba(232,93,4,.12);margin:0 auto;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;position:relative;overflow:hidden}
+.app-phone::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:80px;height:24px;background:var(--bg);border-radius:0 0 14px 14px}
+.app-phone i{color:var(--accent);opacity:.5}
+.app-phone span{font-family:var(--font-heading);color:var(--text-muted);font-size:.9rem;font-style:italic}
+.app-features{list-style:none;margin:24px 0 36px}
+.app-features li{display:flex;align-items:center;gap:12px;padding:10px 0;font-size:.95rem;color:var(--text-muted)}
+.app-features li i{color:var(--accent);flex-shrink:0}
+.app-buttons{display:flex;gap:16px;flex-wrap:wrap}
+.app-btn{background:var(--bg-card);border:1px solid rgba(232,93,4,.15);border-radius:14px;padding:14px 24px;display:flex;align-items:center;gap:12px;transition:var(--transition)}
+.app-btn:hover{border-color:var(--accent);background:rgba(232,93,4,.06);transform:translateY(-2px)}
+.app-btn i{color:var(--accent)}
+.app-btn-text{text-align:left}
+.app-btn-text small{display:block;font-size:.68rem;color:var(--text-muted)}
+.app-btn-text strong{font-size:.95rem}
+@media(max-width:768px){
+.app-container{grid-template-columns:1fr;text-align:center}
+.app-buttons{justify-content:center}
+.app-phone{max-width:220px}
+}
+
+/* ─── TESTIMONIALS ─── */
+.testimonials-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.testimonial-card{background:var(--bg-card);border-radius:var(--radius-lg);padding:28px;border:1px solid transparent;transition:var(--transition)}
+.testimonial-card:hover{border-color:rgba(232,93,4,.12);transform:translateY(-3px)}
+.testimonial-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.testimonial-avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:700;font-size:1.1rem;color:var(--bg);flex-shrink:0}
+.testimonial-name{font-weight:700;font-size:.92rem}
+.testimonial-location{font-size:.75rem;color:var(--text-muted)}
+.testimonial-stars{display:flex;gap:2px;margin-bottom:12px}
+.testimonial-stars i{color:var(--gold)}
+.testimonial-text{font-size:.88rem;color:var(--text-muted);line-height:1.65;font-style:italic}
+@media(max-width:1024px){.testimonials-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.testimonials-grid{grid-template-columns:1fr}}
+
+/* ─── FOOTER ─── */
+.footer{background:var(--bg-surface);border-top:1px solid rgba(232,93,4,.08);padding:64px 0 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand{font-family:var(--font-heading);font-size:1.5rem;color:var(--gold);display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.footer-brand i{color:var(--accent)}
+.footer-desc{font-size:.88rem;color:var(--text-muted);line-height:1.65;margin-bottom:20px}
+.footer-social{display:flex;gap:12px}
+.footer-social a{width:40px;height:40px;border-radius:10px;background:rgba(232,93,4,.08);display:flex;align-items:center;justify-content:center;transition:var(--transition)}
+.footer-social a:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
+.footer-social a i{color:var(--text-muted)}
+.footer-social a:hover i{color:#fff}
+.footer h4{font-size:1rem;margin-bottom:16px;color:var(--text)}
+.footer-links li{margin-bottom:10px}
+.footer-links a{font-size:.85rem;color:var(--text-muted);transition:var(--transition)}
+.footer-links a:hover{color:var(--accent)}
+.payment-methods{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.payment-badge{background:rgba(232,93,4,.06);border:1px solid rgba(232,93,4,.1);border-radius:8px;padding:6px 12px;font-size:.72rem;color:var(--text-muted);font-weight:600}
+.footer-bottom{border-top:1px solid rgba(232,93,4,.06);padding:20px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:.8rem;color:var(--text-dim)}
+.delivery-areas{display:flex;gap:8px;flex-wrap:wrap}
+.delivery-areas span{font-size:.75rem;color:var(--text-muted);background:rgba(255,209,102,.06);padding:4px 10px;border-radius:50px}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:500px){.footer-grid{grid-template-columns:1fr}}
+
+/* ─── CART PANEL ─── */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;opacity:0;visibility:hidden;transition:var(--transition)}
+.cart-overlay.open{opacity:1;visibility:visible}
+.cart-panel{position:fixed;top:0;right:-420px;width:400px;max-width:90vw;height:100vh;background:var(--bg-card);z-index:201;transition:transform .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;border-left:1px solid rgba(232,93,4,.1);transform:translateX(0)}
+.cart-panel.open{right:0;transform:translateX(0)}
+.cart-panel:not(.open){transform:translateX(420px)}
+.cart-header{display:flex;align-items:center;justify-content:space-between;padding:24px;border-bottom:1px solid rgba(232,93,4,.08)}
+.cart-header h3{font-size:1.3rem;display:flex;align-items:center;gap:10px}
+.cart-header h3 i{color:var(--accent)}
+.cart-close{background:none;color:var(--text-muted);padding:8px;border-radius:8px;transition:var(--transition)}
+.cart-close:hover{color:var(--text);background:rgba(232,93,4,.1)}
+.cart-items{flex:1;overflow-y:auto;padding:16px 24px}
+.cart-empty{text-align:center;padding:60px 20px;color:var(--text-muted)}
+.cart-empty i{color:var(--text-dim);margin-bottom:16px}
+.cart-empty p{font-size:.95rem}
+.cart-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid rgba(232,93,4,.05)}
+.cart-item-img{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cart-item-img i{color:var(--text-dim);opacity:.5}
+.cart-item-info{flex:1}
+.cart-item-name{font-size:.88rem;font-weight:600;margin-bottom:2px}
+.cart-item-price{font-size:.82rem;color:var(--accent);font-weight:700}
+.cart-item-qty{display:flex;align-items:center;gap:6px}
+.cart-item-remove{background:none;color:var(--text-dim);padding:4px;transition:var(--transition)}
+.cart-item-remove:hover{color:var(--danger)}
+.cart-footer{padding:24px;border-top:1px solid rgba(232,93,4,.08)}
+.cart-subtotal{display:flex;justify-content:space-between;margin-bottom:6px;font-size:.88rem;color:var(--text-muted)}
+.cart-delivery{display:flex;justify-content:space-between;margin-bottom:12px;font-size:.85rem;color:var(--text-muted)}
+.cart-delivery span:last-child{color:var(--success);font-weight:600}
+.cart-total{display:flex;justify-content:space-between;font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:20px;padding-top:12px;border-top:1px solid rgba(232,93,4,.08)}
+.cart-total span:last-child{color:var(--accent)}
+.btn-checkout{width:100%;background:var(--accent);color:#fff;padding:16px;border-radius:14px;font-size:1rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;transition:var(--transition)}
+.btn-checkout:hover{background:var(--accent-hover);box-shadow:0 8px 32px var(--accent-glow)}
+
+/* ─── WHATSAPP BTN ─── */
+.whatsapp-btn{position:fixed;bottom:28px;left:28px;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;z-index:90;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:var(--transition);animation:whatsappPulse 2s ease-in-out infinite}
+.whatsapp-btn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.5)}
+@keyframes whatsappPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.35)}50%{box-shadow:0 4px 20px rgba(37,211,102,.55),0 0 0 12px rgba(37,211,102,.08)}}
+
+/* ─── FLOATING CART ─── */
+.floating-cart{position:fixed;bottom:28px;right:28px;z-index:90;display:none}
+.floating-cart.show{display:block}
+.floating-cart button{width:60px;height:60px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px var(--accent-glow);transition:var(--transition);position:relative}
+.floating-cart button:hover{transform:scale(1.1);background:var(--accent-hover)}
+.floating-cart .fc-count{position:absolute;top:-4px;right:-4px;background:var(--gold);color:var(--bg);width:22px;height:22px;border-radius:50%;font-size:.72rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+
+/* img placeholders */
+.placeholder-japonesa{background:linear-gradient(135deg,#1a1412,#2d1f16)}
+.placeholder-italiana{background:linear-gradient(135deg,#1a1210,#2d1814)}
+.placeholder-brasileira{background:linear-gradient(135deg,#1a1510,#2d2014)}
+.placeholder-francesa{background:linear-gradient(135deg,#16140f,#2a241a)}
+.placeholder-vegana{background:linear-gradient(135deg,#101a10,#1a2d1a)}
+.placeholder-sobremesas{background:linear-gradient(135deg,#1a1018,#2d1a28)}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" role="navigation" aria-label="Navegação principal">
+  <div class="container">
+    <a href="#" class="nav-brand" aria-label="Gourmet Express - Início">
+      <i data-lucide="chef-hat" aria-hidden="true"></i>
+      Gourmet Express
+    </a>
+    <div class="nav-links" id="navLinks" role="menubar">
+      <a href="#categorias" role="menuitem">Categorias</a>
+      <a href="#restaurantes" role="menuitem">Restaurantes</a>
+      <a href="#pratos" role="menuitem">Cardápio</a>
+      <a href="#como-funciona" role="menuitem">Como Funciona</a>
+      <a href="#app" role="menuitem">App</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <button class="nav-cart" id="navCartBtn" aria-label="Abrir carrinho">
+        <i data-lucide="shopping-bag" style="width:18px;height:18px" aria-hidden="true"></i>
+        Carrinho
+        <span class="cart-count" id="navCartCount">0</span>
+      </button>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menu" aria-expanded="false">
+        <i data-lucide="menu" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-content">
+      <p class="section-label reveal">Delivery Premium</p>
+      <h1 class="reveal reveal-delay-1">Sabores Premium<span>na Sua Porta</span></h1>
+      <p class="hero-tagline reveal reveal-delay-2">Restaurantes exclusivos, chefs renomados e pratos sofisticados entregues com a agilidade que você merece. Experimente a alta gastronomia sem sair de casa.</p>
+      <div class="hero-ctas reveal reveal-delay-3">
+        <a href="#pratos" class="btn-primary">
+          <i data-lucide="utensils" style="width:18px;height:18px" aria-hidden="true"></i>
+          Peça Agora
+        </a>
+        <a href="#como-funciona" class="btn-secondary">
+          <i data-lucide="play-circle" style="width:18px;height:18px" aria-hidden="true"></i>
+          Como Funciona
+        </a>
+      </div>
+      <div class="hero-stats reveal reveal-delay-4">
+        <div class="hero-stat">
+          <strong>250+</strong>
+          <span>Restaurantes</span>
+        </div>
+        <div class="hero-stat">
+          <strong>15min</strong>
+          <span>Entrega Média</span>
+        </div>
+        <div class="hero-stat">
+          <strong>50k+</strong>
+          <span>Clientes Felizes</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal reveal-delay-2">
+      <div class="hero-orbit" aria-hidden="true"></div>
+      <div class="hero-plate">
+        <div class="hero-plate-inner">
+          <i data-lucide="utensils-crossed" style="width:64px;height:64px" aria-hidden="true"></i>
+          <span>Alta Gastronomia</span>
+        </div>
+      </div>
+      <div class="hero-delivery-badge">
+        <i data-lucide="bike" style="width:22px;height:22px" aria-hidden="true"></i>
+        <div>
+          <span>Entrega em</span><br>
+          <strong>15-30 min</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section categories" id="categorias">
+  <div class="container text-center">
+    <p class="section-label reveal">Explore</p>
+    <h2 class="section-title reveal">Categorias Gastronômicas</h2>
+    <p class="section-desc reveal">Dos sushis mais delicados às sobremesas irresistíveis. Escolha sua culinária favorita e descubra novos sabores.</p>
+    <div class="categories-grid">
+      <div class="category-card reveal reveal-delay-1" tabindex="0" role="button" aria-label="Culinária Japonesa">
+        <div class="category-icon"><i data-lucide="fish" aria-hidden="true"></i></div>
+        <h3>Japonesa</h3>
+        <p>42 restaurantes</p>
+      </div>
+      <div class="category-card reveal reveal-delay-1" tabindex="0" role="button" aria-label="Culinária Italiana">
+        <div class="category-icon"><i data-lucide="pizza" aria-hidden="true"></i></div>
+        <h3>Italiana</h3>
+        <p>38 restaurantes</p>
+      </div>
+      <div class="category-card reveal reveal-delay-2" tabindex="0" role="button" aria-label="Culinária Brasileira">
+        <div class="category-icon"><i data-lucide="flame" aria-hidden="true"></i></div>
+        <h3>Brasileira</h3>
+        <p>65 restaurantes</p>
+      </div>
+      <div class="category-card reveal reveal-delay-2" tabindex="0" role="button" aria-label="Culinária Francesa">
+        <div class="category-icon"><i data-lucide="wine" aria-hidden="true"></i></div>
+        <h3>Francesa</h3>
+        <p>18 restaurantes</p>
+      </div>
+      <div class="category-card reveal reveal-delay-3" tabindex="0" role="button" aria-label="Culinária Vegana">
+        <div class="category-icon"><i data-lucide="leaf" aria-hidden="true"></i></div>
+        <h3>Vegana</h3>
+        <p>29 restaurantes</p>
+      </div>
+      <div class="category-card reveal reveal-delay-3" tabindex="0" role="button" aria-label="Sobremesas">
+        <div class="category-icon"><i data-lucide="cake-slice" aria-hidden="true"></i></div>
+        <h3>Sobremesas</h3>
+        <p>47 restaurantes</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTAURANTS -->
+<section class="section" id="restaurantes">
+  <div class="container">
+    <p class="section-label reveal">Parceiros</p>
+    <h2 class="section-title reveal">Restaurantes Exclusivos</h2>
+    <p class="section-desc reveal">Curadoria dos melhores restaurantes da cidade, selecionados pelo nosso time de especialistas gastronômicos.</p>
+    <div class="restaurants-grid">
+      <div class="restaurant-card reveal reveal-delay-1">
+        <div class="restaurant-img placeholder-japonesa">
+          <div class="img-placeholder"><i data-lucide="image" style="width:40px;height:40px" aria-hidden="true"></i></div>
+          <span class="restaurant-badge">Premium</span>
+        </div>
+        <div class="restaurant-info">
+          <h3 class="restaurant-name">Sakura Omakase</h3>
+          <p class="restaurant-cuisine">Japonesa Contemporânea</p>
+          <div class="restaurant-meta">
+            <span class="rating"><i data-lucide="star" style="width:14px;height:14px;fill:currentColor" aria-hidden="true"></i> 4.9</span>
+            <span><i data-lucide="clock" style="width:14px;height:14px" aria-hidden="true"></i> 25-35 min</span>
+            <span>Min. R$ 60</span>
+          </div>
+        </div>
+      </div>
+      <div class="restaurant-card reveal reveal-delay-2">
+        <div class="restaurant-img placeholder-italiana">
+          <div class="img-placeholder"><i data-lucide="image" style="width:40px;height:40px" aria-hidden="true"></i></div>
+          <span class="restaurant-badge">Novo</span>
+        </div>
+        <div class="restaurant-info">
+          <h3 class="restaurant-name">Trattoria del Nonno</h3>
+          <p class="restaurant-cuisine">Italiana Artesanal</p>
+          <div class="restaurant-meta">
+            <span class="rating"><i data-lucide="star" style="width:14px;height:14px;fill:currentColor" aria-hidden="true"></i> 4.8</span>
+            <span><i data-lucide="clock" style="width:14px;height:14px" aria-hidden="true"></i> 30-40 min</span>
+            <span>Min. R$ 45</span>
+          </div>
+        </div>
+      </div>
+      <div class="restaurant-card reveal reveal-delay-3">
+        <div class="restaurant-img placeholder-brasileira">
+          <div class="img-placeholder"><i data-lucide="image" style="width:40px;height:40px" aria-hidden="true"></i></div>
+          <span class="restaurant-badge">Top 10</span>
+        </div>
+        <div class="restaurant-info">
+          <h3 class="restaurant-name">Fogo & Brasa</h3>
+          <p class="restaurant-cuisine">Churrascaria Premium</p>
+          <div class="restaurant-meta">
+            <span class="rating"><i data-lucide="star" style="width:14px;height:14px;fill:currentColor" aria-hidden="true"></i> 4.9</span>
+            <span><i data-lucide="clock" style="width:14px;height:14px" aria-hidden="true"></i> 35-45 min</span>
+            <span>Min. R$ 80</span>
+          </div>
+        </div>
+      </div>
+      <div class="restaurant-card reveal reveal-delay-1">
+        <div class="restaurant-img placeholder-francesa">
+          <div class="img-placeholder"><i data-lucide="image" style="width:40px;height:40px" aria-hidden="true"></i></div>
+          <span class="restaurant-badge">Exclusivo</span>
+        </div>
+        <div class="restaurant-info">
+          <h3 class="restaurant-name">Le Petit Bistrot</h3>
+          <p class="restaurant-cuisine">Bistrô Francês</p>
+          <div class="restaurant-meta">
+            <span class="rating"><i data-lucide="star" style="width:14px;height:14px;fill:currentColor" aria-hidden="true"></i> 4.7</span>
+            <span><i data-lucide="clock" style="width:14px;height:14px" aria-hidden="true"></i> 30-40 min</span>
+            <span>Min. R$ 70</span>
+          </div>
+        </div>
+      </div>
+      <div class="restaurant-card reveal reveal-delay-2">
+        <div class="restaurant-img placeholder-vegana">
+          <div class="img-placeholder"><i data-lucide="image" style="width:40px;height:40px" aria-hidden="true"></i></div>
+        </div>
+        <div class="restaurant-info">
+          <h3 class="restaurant-name">Raízes Vivas</h3>
+          <p class="restaurant-cuisine">Plant-Based Gourmet</p>
+          <div class="restaurant-meta">
+            <span class="rating"><i data-lucide="star" style="width:14px;height:14px;fill:currentColor" aria-hidden="true"></i> 4.8</span>
+            <span><i data-lucide="clock" style="width:14px;height:14px" aria-hidden="true"></i> 20-30 min</span>
+            <span>Min. R$ 35</span>
+          </div>
+        </div>
+      </div>
+      <div class="restaurant-card reveal reveal-delay-3">
+        <div class="restaurant-img placeholder-sobremesas">
+          <div class="img-placeholder"><i data-lucide="image" style="width:40px;height:40px" aria-hidden="true"></i></div>
+          <span class="restaurant-badge">Favorito</span>
+        </div>
+        <div class="restaurant-info">
+          <h3 class="restaurant-name">Dolce Tentação</h3>
+          <p class="restaurant-cuisine">Confeitaria & Sobremesas</p>
+          <div class="restaurant-meta">
+            <span class="rating"><i data-lucide="star" style="width:14px;height:14px;fill:currentColor" aria-hidden="true"></i> 5.0</span>
+            <span><i data-lucide="clock" style="width:14px;height:14px" aria-hidden="true"></i> 15-25 min</span>
+            <span>Min. R$ 25</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POPULAR DISHES -->
+<section class="section dishes" id="pratos">
+  <div class="container">
+    <p class="section-label reveal">Mais Pedidos</p>
+    <h2 class="section-title reveal">Pratos Populares</h2>
+    <p class="section-desc reveal">Os favoritos dos nossos clientes, selecionados pela qualidade excepcional e sabor inigualável.</p>
+    <div class="dishes-grid" id="dishesGrid">
+      <!-- dishes injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="como-funciona">
+  <div class="container text-center">
+    <p class="section-label reveal">Simples & Rápido</p>
+    <h2 class="section-title reveal">Como Funciona</h2>
+    <p class="section-desc reveal">Em apenas três passos, seus pratos favoritos chegam quentinhos na sua porta.</p>
+    <div class="steps-grid">
+      <div class="step-card reveal reveal-delay-1">
+        <span class="step-number" aria-hidden="true">01</span>
+        <div class="step-icon">
+          <div class="pulse" aria-hidden="true"></div>
+          <i data-lucide="search" style="width:32px;height:32px" aria-hidden="true"></i>
+        </div>
+        <h3>Escolha</h3>
+        <p>Navegue por centenas de restaurantes e pratos exclusivos na nossa plataforma.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <span class="step-number" aria-hidden="true">02</span>
+        <div class="step-icon">
+          <div class="pulse" aria-hidden="true"></div>
+          <i data-lucide="credit-card" style="width:32px;height:32px" aria-hidden="true"></i>
+        </div>
+        <h3>Peça</h3>
+        <p>Finalize seu pedido com pagamento seguro. Pix, cartão ou vale-refeição.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <span class="step-number" aria-hidden="true">03</span>
+        <div class="step-icon">
+          <div class="pulse" aria-hidden="true"></div>
+          <i data-lucide="package-check" style="width:32px;height:32px" aria-hidden="true"></i>
+        </div>
+        <h3>Receba</h3>
+        <p>Acompanhe em tempo real e receba seu pedido fresquinho na sua porta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER TRACKER -->
+<section class="section tracker" id="rastreio">
+  <div class="container text-center">
+    <p class="section-label reveal">Tempo Real</p>
+    <h2 class="section-title reveal">Acompanhe Seu Pedido</h2>
+    <p class="section-desc reveal">Rastreamento ao vivo do preparo à entrega. Saiba exatamente onde está sua refeição.</p>
+    <div class="tracker-container reveal">
+      <div class="tracker-header">
+        <div class="tracker-order">Pedido <span>#GE-2847</span></div>
+        <div class="tracker-eta">
+          <i data-lucide="timer" style="width:18px;height:18px" aria-hidden="true"></i>
+          Chegada estimada: 18 min
+        </div>
+      </div>
+      <div class="tracker-progress">
+        <div class="tracker-bar">
+          <div class="tracker-bar-fill" id="trackerFill"></div>
+        </div>
+      </div>
+      <div class="tracker-steps" id="trackerSteps">
+        <div class="tracker-step completed">
+          <div class="tracker-step-dot"><i data-lucide="check" style="width:16px;height:16px" aria-hidden="true"></i></div>
+          <span>Confirmado</span>
+        </div>
+        <div class="tracker-step completed">
+          <div class="tracker-step-dot"><i data-lucide="chef-hat" style="width:16px;height:16px" aria-hidden="true"></i></div>
+          <span>Preparando</span>
+        </div>
+        <div class="tracker-step active">
+          <div class="tracker-step-dot"><i data-lucide="bike" style="width:16px;height:16px" aria-hidden="true"></i></div>
+          <span>A Caminho</span>
+        </div>
+        <div class="tracker-step">
+          <div class="tracker-step-dot"><i data-lucide="house" style="width:16px;height:16px" aria-hidden="true"></i></div>
+          <span>Entregue</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO -->
+<section class="promo" id="promo">
+  <div class="container">
+    <div class="promo-banner reveal">
+      <div class="promo-content">
+        <h2>Primeira Compra<br><span>30% OFF</span></h2>
+        <p>Aproveite nosso desconto especial para novos clientes. Válido para qualquer restaurante da plataforma.</p>
+        <div class="promo-code">
+          <i data-lucide="ticket" style="width:20px;height:20px" aria-hidden="true"></i>
+          GOURMET30
+        </div>
+        <div class="countdown" id="countdown" aria-label="Tempo restante da promoção">
+          <div class="countdown-item">
+            <div class="countdown-value" id="countDays">02</div>
+            <div class="countdown-label">Dias</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="countHours">14</div>
+            <div class="countdown-label">Horas</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="countMinutes">37</div>
+            <div class="countdown-label">Min</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="countSeconds">52</div>
+            <div class="countdown-label">Seg</div>
+          </div>
+        </div>
+      </div>
+      <div class="promo-visual" aria-hidden="true">
+        <i data-lucide="percent" style="width:72px;height:72px" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP DOWNLOAD -->
+<section class="section app-section" id="app">
+  <div class="container">
+    <div class="app-container">
+      <div class="app-phone reveal" aria-hidden="true">
+        <i data-lucide="smartphone" style="width:48px;height:48px" aria-hidden="true"></i>
+        <span>Gourmet Express</span>
+      </div>
+      <div>
+        <p class="section-label reveal">Baixe Grátis</p>
+        <h2 class="section-title reveal">O App Gourmet Express</h2>
+        <p class="section-desc reveal">Tenha os melhores restaurantes da cidade na palma da mão. Ofertas exclusivas, rastreamento ao vivo e muito mais.</p>
+        <ul class="app-features reveal">
+          <li><i data-lucide="bell" style="width:20px;height:20px" aria-hidden="true"></i> Notificações de promoções exclusivas</li>
+          <li><i data-lucide="map-pin" style="width:20px;height:20px" aria-hidden="true"></i> Rastreamento GPS em tempo real</li>
+          <li><i data-lucide="repeat" style="width:20px;height:20px" aria-hidden="true"></i> Repita pedidos anteriores com 1 toque</li>
+          <li><i data-lucide="shield-check" style="width:20px;height:20px" aria-hidden="true"></i> Pagamentos seguros e criptografados</li>
+        </ul>
+        <div class="app-buttons reveal">
+          <a href="#" class="app-btn" aria-label="Baixar na App Store">
+            <i data-lucide="apple" style="width:28px;height:28px" aria-hidden="true"></i>
+            <div class="app-btn-text">
+              <small>Disponível na</small>
+              <strong>App Store</strong>
+            </div>
+          </a>
+          <a href="#" class="app-btn" aria-label="Baixar no Google Play">
+            <i data-lucide="play" style="width:28px;height:28px" aria-hidden="true"></i>
+            <div class="app-btn-text">
+              <small>Disponível no</small>
+              <strong>Google Play</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="depoimentos">
+  <div class="container text-center">
+    <p class="section-label reveal">Depoimentos</p>
+    <h2 class="section-title reveal">O Que Nossos Clientes Dizem</h2>
+    <p class="section-desc reveal">Milhares de clientes satisfeitos que transformaram suas refeições com o Gourmet Express.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#e85d04,#ff8c42)">MC</div>
+          <div>
+            <div class="testimonial-name">Mariana Costa</div>
+            <div class="testimonial-location">Jardins, SP</div>
+          </div>
+        </div>
+        <div class="testimonial-stars" aria-label="5 estrelas">
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+        </div>
+        <p class="testimonial-text">"A qualidade dos restaurantes parceiros é surpreendente. Nunca recebi um prato que não fosse perfeito. Entrega sempre pontual!"</p>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#ffd166,#ff9f1c)">RL</div>
+          <div>
+            <div class="testimonial-name">Ricardo Lima</div>
+            <div class="testimonial-location">Pinheiros, SP</div>
+          </div>
+        </div>
+        <div class="testimonial-stars" aria-label="5 estrelas">
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+        </div>
+        <p class="testimonial-text">"Uso o Gourmet Express diariamente no escritório. O rastreamento em tempo real é fantástico, e os preços são muito justos."</p>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-3">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#4ade80,#22c55e)">AS</div>
+          <div>
+            <div class="testimonial-name">Ana Souza</div>
+            <div class="testimonial-location">Vila Madalena, SP</div>
+          </div>
+        </div>
+        <div class="testimonial-stars" aria-label="5 estrelas">
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+        </div>
+        <p class="testimonial-text">"As opções veganas são incríveis! Finalmente um delivery que valoriza quem tem restrições alimentares. Super recomendo."</p>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-4">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:linear-gradient(135deg,#60a5fa,#3b82f6)">PF</div>
+          <div>
+            <div class="testimonial-name">Pedro Ferreira</div>
+            <div class="testimonial-location">Itaim Bibi, SP</div>
+          </div>
+        </div>
+        <div class="testimonial-stars" aria-label="4 estrelas">
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;fill:#ffd166;color:#ffd166" aria-hidden="true"></i>
+          <i data-lucide="star" style="width:14px;height:14px;color:#ffd166" aria-hidden="true"></i>
+        </div>
+        <p class="testimonial-text">"O app é muito intuitivo e bonito. Adoro a funcionalidade de repetir pedidos anteriores. Mudou minha rotina de jantares."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contato">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <i data-lucide="chef-hat" aria-hidden="true"></i>
+          Gourmet Express
+        </div>
+        <p class="footer-desc">A plataforma premium de delivery que conecta você aos melhores restaurantes da cidade. Sabor, qualidade e agilidade em cada entrega.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Twitter"><i data-lucide="twitter" style="width:18px;height:18px" aria-hidden="true"></i></a>
+          <a href="#" aria-label="YouTube"><i data-lucide="youtube" style="width:18px;height:18px" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul class="footer-links">
+          <li><a href="#categorias">Categorias</a></li>
+          <li><a href="#restaurantes">Restaurantes</a></li>
+          <li><a href="#pratos">Cardápio</a></li>
+          <li><a href="#como-funciona">Como Funciona</a></li>
+          <li><a href="#app">Baixe o App</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Suporte</h4>
+        <ul class="footer-links">
+          <li><a href="#">Central de Ajuda</a></li>
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Seja Parceiro</a></li>
+          <li><a href="#">Trabalhe Conosco</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Pagamentos</h4>
+        <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:12px">Aceitamos diversas formas de pagamento com total segurança.</p>
+        <div class="payment-methods">
+          <span class="payment-badge">Pix</span>
+          <span class="payment-badge">Visa</span>
+          <span class="payment-badge">Mastercard</span>
+          <span class="payment-badge">Elo</span>
+          <span class="payment-badge">Amex</span>
+          <span class="payment-badge">VR</span>
+          <span class="payment-badge">Sodexo</span>
+          <span class="payment-badge">Alelo</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Gourmet Express. Todos os direitos reservados.</p>
+      <div class="delivery-areas">
+        <span>Jardins</span>
+        <span>Pinheiros</span>
+        <span>Vila Madalena</span>
+        <span>Itaim Bibi</span>
+        <span>Moema</span>
+        <span>Brooklin</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- CART PANEL -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-panel" id="cartPanel" role="dialog" aria-label="Carrinho de compras" aria-hidden="true">
+  <div class="cart-header">
+    <h3><i data-lucide="shopping-bag" style="width:22px;height:22px" aria-hidden="true"></i> Seu Pedido</h3>
+    <button class="cart-close" id="cartClose" aria-label="Fechar carrinho"><i data-lucide="x" style="width:22px;height:22px" aria-hidden="true"></i></button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <i data-lucide="shopping-bag" style="width:48px;height:48px" aria-hidden="true"></i>
+      <p>Seu carrinho está vazio.<br>Adicione pratos deliciosos!</p>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">R$ 0,00</span></div>
+    <div class="cart-delivery"><span>Entrega</span><span>Grátis</span></div>
+    <div class="cart-total"><span>Total</span><span id="cartTotal">R$ 0,00</span></div>
+    <button class="btn-checkout"><i data-lucide="lock" style="width:18px;height:18px" aria-hidden="true"></i> Finalizar Pedido</button>
+  </div>
+</aside>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/5511999999999?text=Olá! Preciso de ajuda com meu pedido no Gourmet Express." class="whatsapp-btn" aria-label="Contato via WhatsApp" target="_blank" rel="noopener noreferrer">
+  <i data-lucide="message-circle" style="width:28px;height:28px" aria-hidden="true"></i>
+</a>
+
+<!-- FLOATING CART -->
+<div class="floating-cart" id="floatingCart">
+  <button aria-label="Abrir carrinho" id="floatingCartBtn">
+    <i data-lucide="shopping-bag" style="width:24px;height:24px" aria-hidden="true"></i>
+    <span class="fc-count" id="floatingCartCount">0</span>
+  </button>
+</div>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+(function(){
+'use strict';
+
+/* ─── DATA ─── */
+const dishes = [
+  {id:1,name:'Sashimi Selection',restaurant:'Sakura Omakase',price:89.90,tag:'Japonesa',gradient:'linear-gradient(135deg,#1a1412,#2d1f16)'},
+  {id:2,name:'Risotto al Tartufo',restaurant:'Trattoria del Nonno',price:72.50,tag:'Italiana',gradient:'linear-gradient(135deg,#1a1210,#2d1814)'},
+  {id:3,name:'Picanha Premium 400g',restaurant:'Fogo & Brasa',price:98.00,tag:'Brasileira',gradient:'linear-gradient(135deg,#1a1510,#2d2014)'},
+  {id:4,name:'Crème Brûlée',restaurant:'Le Petit Bistrot',price:38.90,tag:'Francesa',gradient:'linear-gradient(135deg,#16140f,#2a241a)'},
+  {id:5,name:'Bowl Proteico Vegano',restaurant:'Raízes Vivas',price:42.90,tag:'Vegana',gradient:'linear-gradient(135deg,#101a10,#1a2d1a)'},
+  {id:6,name:'Tiramisù Clássico',restaurant:'Dolce Tentação',price:34.50,tag:'Sobremesas',gradient:'linear-gradient(135deg,#1a1018,#2d1a28)'},
+  {id:7,name:'Temaki Especial Duo',restaurant:'Sakura Omakase',price:56.00,tag:'Japonesa',gradient:'linear-gradient(135deg,#1a1412,#2d1f16)'},
+  {id:8,name:'Feijoada Imperial',restaurant:'Fogo & Brasa',price:68.00,tag:'Brasileira',gradient:'linear-gradient(135deg,#1a1510,#2d2014)'}
+];
+
+const cart = [];
+const qtyMap = {};
+dishes.forEach(d => qtyMap[d.id] = 0);
+
+/* ─── RENDER DISHES ─── */
+function renderDishes(){
+  const grid = document.getElementById('dishesGrid');
+  grid.innerHTML = dishes.map((d,i) => `
+    <div class="dish-card reveal reveal-delay-${(i%4)+1}" data-id="${d.id}">
+      <div class="dish-img" style="background:${d.gradient}">
+        <div class="img-placeholder"><i data-lucide="utensils" style="width:32px;height:32px" aria-hidden="true"></i></div>
+        <span class="dish-tag">${d.tag}</span>
+      </div>
+      <div class="dish-info">
+        <h3 class="dish-name">${d.name}</h3>
+        <p class="dish-restaurant">${d.restaurant}</p>
+        <div class="dish-footer">
+          <div class="dish-price">R$ ${d.price.toFixed(2).replace('.',',')}</div>
+          <div class="dish-actions">
+            <div class="dish-actions" id="qtyControls-${d.id}" style="display:${qtyMap[d.id]>0?'flex':'none'};align-items:center;gap:6px">
+              <button class="qty-btn" onclick="changeQty(${d.id},-1)" aria-label="Remover unidade">-</button>
+              <span class="qty-value" id="qty-${d.id}">${qtyMap[d.id]}</span>
+              <button class="qty-btn" onclick="changeQty(${d.id},1)" aria-label="Adicionar unidade">+</button>
+            </div>
+            <button class="btn-add" onclick="addToCart(${d.id})" id="addBtn-${d.id}" ${qtyMap[d.id]>0?'style="display:none"':''}>
+              <i data-lucide="plus" style="width:14px;height:14px" aria-hidden="true"></i> Adicionar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  lucide.createIcons();
+  initReveal();
+}
+
+/* ─── CART LOGIC ─── */
+window.addToCart = function(id){
+  const dish = dishes.find(d=>d.id===id);
+  if(!dish) return;
+  qtyMap[id] = 1;
+  const existing = cart.find(c=>c.id===id);
+  if(!existing) cart.push({...dish, qty:1});
+  updateDishUI(id);
+  updateCart();
+};
+
+window.changeQty = function(id, delta){
+  qtyMap[id] = Math.max(0, qtyMap[id] + delta);
+  const idx = cart.findIndex(c=>c.id===id);
+  if(qtyMap[id] === 0){
+    if(idx > -1) cart.splice(idx,1);
+  } else {
+    if(idx > -1) cart[idx].qty = qtyMap[id];
+    else { const d=dishes.find(x=>x.id===id); if(d) cart.push({...d,qty:qtyMap[id]}); }
+  }
+  updateDishUI(id);
+  updateCart();
+};
+
+function updateDishUI(id){
+  const qtyEl = document.getElementById('qty-'+id);
+  const ctrlEl = document.getElementById('qtyControls-'+id);
+  const addEl = document.getElementById('addBtn-'+id);
+  if(qtyEl) qtyEl.textContent = qtyMap[id];
+  if(ctrlEl) ctrlEl.style.display = qtyMap[id]>0?'flex':'none';
+  if(addEl) addEl.style.display = qtyMap[id]>0?'none':'inline-flex';
+}
+
+function updateCart(){
+  const totalItems = cart.reduce((s,c)=>s+c.qty,0);
+  const subtotal = cart.reduce((s,c)=>s+c.price*c.qty,0);
+
+  document.getElementById('navCartCount').textContent = totalItems;
+  document.getElementById('floatingCartCount').textContent = totalItems;
+
+  const fc = document.getElementById('floatingCart');
+  fc.classList.toggle('show', totalItems > 0);
+
+  const empty = document.getElementById('cartEmpty');
+  const footer = document.getElementById('cartFooter');
+  const items = document.getElementById('cartItems');
+
+  if(totalItems === 0){
+    empty.style.display = 'block';
+    footer.style.display = 'none';
+    items.querySelectorAll('.cart-item').forEach(el=>el.remove());
+    return;
+  }
+
+  empty.style.display = 'none';
+  footer.style.display = 'block';
+
+  items.querySelectorAll('.cart-item').forEach(el=>el.remove());
+  cart.forEach(c=>{
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `
+      <div class="cart-item-img" style="background:${c.gradient}"><i data-lucide="utensils" style="width:20px;height:20px" aria-hidden="true"></i></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${c.name}</div>
+        <div class="cart-item-price">R$ ${(c.price*c.qty).toFixed(2).replace('.',',')} <small>(${c.qty}x)</small></div>
+      </div>
+      <div class="cart-item-qty">
+        <button class="qty-btn" onclick="changeQty(${c.id},-1)" aria-label="Reduzir">-</button>
+        <span class="qty-value">${c.qty}</span>
+        <button class="qty-btn" onclick="changeQty(${c.id},1)" aria-label="Aumentar">+</button>
+      </div>
+      <button class="cart-item-remove" onclick="changeQty(${c.id},-${c.qty})" aria-label="Remover item"><i data-lucide="trash-2" style="width:16px;height:16px" aria-hidden="true"></i></button>
+    `;
+    items.appendChild(div);
+  });
+
+  document.getElementById('cartSubtotal').textContent = 'R$ '+subtotal.toFixed(2).replace('.',',');
+  document.getElementById('cartTotal').textContent = 'R$ '+subtotal.toFixed(2).replace('.',',');
+  lucide.createIcons();
+}
+
+/* ─── CART PANEL TOGGLE ─── */
+function openCart(){
+  document.getElementById('cartPanel').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+  document.getElementById('cartPanel').setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeCart(){
+  document.getElementById('cartPanel').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('cartPanel').setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+document.getElementById('navCartBtn').addEventListener('click', openCart);
+document.getElementById('cartClose').addEventListener('click', closeCart);
+document.getElementById('cartOverlay').addEventListener('click', closeCart);
+document.getElementById('floatingCartBtn').addEventListener('click', openCart);
+
+/* ─── MOBILE MENU ─── */
+const mobileToggle = document.getElementById('mobileToggle');
+const navLinks = document.getElementById('navLinks');
+mobileToggle.addEventListener('click', function(){
+  const open = navLinks.classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
+});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+/* ─── NAVBAR SCROLL ─── */
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll',()=>{
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+},{passive:true});
+
+/* ─── INTERSECTION OBSERVER ─── */
+function initReveal(){
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el=>observer.observe(el));
+}
+
+/* ─── ORDER TRACKER ANIMATION ─── */
+function animateTracker(){
+  const fill = document.getElementById('trackerFill');
+  if(!fill) return;
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        fill.style.width = '62%';
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.3});
+  observer.observe(fill.closest('.tracker-container'));
+}
+
+/* ─── COUNTDOWN ─── */
+function startCountdown(){
+  const end = new Date();
+  end.setDate(end.getDate()+2);
+  end.setHours(23,59,59,0);
+  function tick(){
+    const now = new Date();
+    let diff = Math.max(0, Math.floor((end-now)/1000));
+    const d = Math.floor(diff/86400); diff %= 86400;
+    const h = Math.floor(diff/3600); diff %= 3600;
+    const m = Math.floor(diff/60);
+    const s = diff % 60;
+    document.getElementById('countDays').textContent = String(d).padStart(2,'0');
+    document.getElementById('countHours').textContent = String(h).padStart(2,'0');
+    document.getElementById('countMinutes').textContent = String(m).padStart(2,'0');
+    document.getElementById('countSeconds').textContent = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick,1000);
+}
+
+/* ─── INIT ─── */
+lucide.createIcons();
+renderDishes();
+initReveal();
+animateTracker();
+startCountdown();
+
+})();
+</script>
+</body>
+</html>
